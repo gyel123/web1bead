@@ -1,0 +1,88 @@
+header {
+    border-radius: 10px;
+    background-color: #2e4154; /* MetalDarkBlue */
+    color: #fff; /* fehér betűszín */
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+header img {
+    float: left;
+    margin: 10px;
+    width: auto;
+    height: 100px;
+}
+
+div#wrapper {
+    margin: 10px;
+}
+
+nav {
+    margin: 0 10px;
+    top: 0;
+    border-radius: 10px;
+    background-color: #87ceeb; /* SkyBlue */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 15px 0;
+}
+
+nav ul li {
+    padding: 0 15px;
+}
+
+nav ul li.active {
+    border: 2px solid #ff6347; /* Tomato */
+}
+
+nav ul a {
+    text-decoration: none;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+div#content {
+    display: table-cell;
+    width: 100%;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+div#content img {
+    float: right;
+    width: 20em;
+    height: auto;
+    margin: 0 15px 15px 0;
+    padding: 3px;
+    border: 3px solid #32cd32; /* LimeGreen */
+}
+
+footer {
+    border-radius: 10px;
+    margin: 10px;
+    padding: 5px 20px;
+    background-color: #ff6666; /* LightCoral */
+    font-family: Arial, sans-serif;
+}
+
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+
+div#galeria {
+    margin: 0 auto;
+    width: 620px;
+}
+
+div.kep {
+    display: inline-block;
+}
+
+div.kep img {
+    width: 200px;
+}
