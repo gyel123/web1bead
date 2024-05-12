@@ -1,33 +1,50 @@
-<table>
-    <caption>5. gyakorlat 1. feladat:<br>TÁBLÁZAT</caption>
-    <tr>
-        <th>Employee</th>
-        <th>Salary</th>
-        <th>Bonus</th>
-        <th>Supervisor</th>
-    </tr>
-    <tr>
-        <td>Stephen C. Cox</td>
-        <td>$300</td>
-        <td>$50</td>
-        <td>Bob</td>
-    </tr>
-    <tr>
-        <td>Josephin Tan</td>
-        <td>$150</td>
-        <td>-</td>
-        <td>Annie</td>
-    </tr>
-    <tr>
-        <td>Joyce Ming</td>
-        <td>$200</td>
-        <td>$35</td>
-        <td>Andy</td>
-    </tr>
-    <tr>
-        <td>James A. Pentel</td>
-        <td>$175</td>
-        <td>$25</td>
-        <td>Annie</td>
-    </tr>
-</table>
+<?php
+$user = 'web1_bead';
+$password = 'admin123'; // Password should be empty if not set
+$database = 'web1_bead';
+$servername = 'mysql.omega:3306'; // Specify port if not default
+$mysqli = new mysqli($servername, $user, $password, $database);
+
+if ($mysqli->connect_error) {
+    die('Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+}
+
+$sql = "SELECT felhasznalo, email, szoveg, datum FROM email ORDER BY datum DESC";
+$result = $mysqli->query($sql);
+$mysqli->close();
+?>
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Üzenetek</title>
+</head>
+<body>
+    <section>
+        <h1>Üzenetek</h1><br>
+
+        <table>
+            <tr>
+                <th>Felhasználó</th>
+                <th>E-mail</th>
+                <th>Üzenet</th>
+                <th>Dátum</th>
+            </tr>
+
+            <?php
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <tr>
+                    <td><?php echo $row['felhasznalo']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['szoveg']; ?></td>
+                    <td><?php echo $row['datum']; ?></td>
+                </tr>
+                <?php
+            }
+            ?>
+        </table>
+    </section>
+</body>
+</html>
