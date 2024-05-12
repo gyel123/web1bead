@@ -1,7 +1,12 @@
-CREATE DATABASE `gyakorlat7`
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `web1_bead` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `web1_bead`;
 
-USE `gyakorlat7`;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+DB_PASSWORD="admin123";
 
 CREATE TABLE `felhasznalok` (
   `id` int(10) unsigned NOT NULL auto_increment,
@@ -11,8 +16,7 @@ CREATE TABLE `felhasznalok` (
   `jelszo` varchar(40) NOT NULL default '',
   PRIMARY KEY  (`id`)
 )
-ENGINE = MYISAM
-CHARACTER SET utf8 COLLATE utf8_general_ci;
+ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 INSERT INTO `felhasznalok` (`id`,`csaladi_nev`,`uto_nev`,`bejelentkezes`,`jelszo`) VALUES 
  (1,'Családi_1','Utónév_1','Login1',sha1('login1')),
@@ -27,3 +31,31 @@ INSERT INTO `felhasznalok` (`id`,`csaladi_nev`,`uto_nev`,`bejelentkezes`,`jelszo
  (10,'Családi_10','Utónév_10','Login10',sha1('login10')),
  (11,'Családi_11','Utónév_11','Login11',sha1('login11')),
  (12,'Családi_12','Utónév_12','Login12',sha1('login12'));
+
+CREATE TABLE `email` (
+  `id` int(11) NOT NULL,
+  `felhasznalo` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `szoveg` text NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexek a kiírt táblákhoz
+--
+
+--
+-- A tábla indexei `email`
+--
+ALTER TABLE `email`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A kiírt táblák AUTO_INCREMENT értéke
+--
+
+--
+-- AUTO_INCREMENT a táblához `email`
+--
+ALTER TABLE `email`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
